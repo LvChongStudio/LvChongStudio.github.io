@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,212 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-2017122002_Singleton" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/21/2017122002_Singleton/" class="article-date">
+  <time datetime="2017-12-20T16:02:21.794Z" itemprop="datePublished">2017-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/21/2017122002_Singleton/">设计模式 之 单例 模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式是开发中很重要的一种思想，今天记录一下单例模式，备忘，哈哈。"><a href="#设计模式是开发中很重要的一种思想，今天记录一下单例模式，备忘，哈哈。" class="headerlink" title="设计模式是开发中很重要的一种思想，今天记录一下单例模式，备忘，哈哈。"></a>设计模式是开发中很重要的一种思想，今天记录一下单例模式，备忘，哈哈。</h1><h2 id="first-懒汉式-双重校验锁-禁止指令重排序优化"><a href="#first-懒汉式-双重校验锁-禁止指令重排序优化" class="headerlink" title="first 懒汉式 + 双重校验锁 + 禁止指令重排序优化"></a>first 懒汉式 + 双重校验锁 + 禁止指令重排序优化</h2><pre><code>public class SingletonOne {
+
+// volatile 禁止指令重排序优化
+private static volatile SingletonOne instance = null;
+
+private SingletonOne() {
+
+}
+
+// synchronized 修饰的同步方法比一般的方法要慢很多。所以此处使用双重校验锁。
+public static SingletonOne getInstance() {
+    if (null == instance) {
+        synchronized(SingletonOne.class) {
+            if (null == instance) {
+                instance = new SingletonOne();
+            }
+        }
+    }
+    return instance;
+}}
+</code></pre><h2 id="second-饿汉式-不推荐"><a href="#second-饿汉式-不推荐" class="headerlink" title="second 饿汉式 不推荐"></a>second 饿汉式 不推荐</h2><pre><code>public class SingletonTwo {
+
+private static SingletonTwo instance = new SingletonTwo();
+
+private SingletonTwo() {
+
+}
+
+public static SingletonTwo getInstance() {
+    return instance;
+}}
+</code></pre><h2 id="third-静态内部类加载"><a href="#third-静态内部类加载" class="headerlink" title="third 静态内部类加载"></a>third 静态内部类加载</h2><pre><code>public class SingletonThree {
+
+private SingletonThree() {
+
+}
+
+private static class SingletonHolder {
+    public static SingletonThree instance = new  SingletonThree();
+}
+
+public static SingletonThree getInstance() {
+    return SingletonHolder.instance;
+}}
+</code></pre><h2 id="fourth-枚举-目前最为安全的实现单例的方法是通过内部静态enum的方法来实现，因为JVM会保证enum不能被反射并且构造器方法只执行一次。"><a href="#fourth-枚举-目前最为安全的实现单例的方法是通过内部静态enum的方法来实现，因为JVM会保证enum不能被反射并且构造器方法只执行一次。" class="headerlink" title="fourth 枚举   目前最为安全的实现单例的方法是通过内部静态enum的方法来实现，因为JVM会保证enum不能被反射并且构造器方法只执行一次。"></a>fourth 枚举   目前最为安全的实现单例的方法是通过内部静态enum的方法来实现，因为JVM会保证enum不能被反射并且构造器方法只执行一次。</h2><pre><code>public class SingletonFour {
+private SingletonFour() {
+
+}
+
+private static enum Singleton{
+    INSTANCE;
+
+    private SingletonFour instance;
+
+    private Singleton() {
+        instance = new SingletonFour();
+    }
+
+    public SingletonFour getInstance() {
+        return instance;
+    }
+
+}
+
+public static SingletonFour getInstance() {
+    return Singleton.INSTANCE.instance;
+}}
+
+
+
+上面提到的三种实现单例的方式都有共同的缺点：
+1.需要额外的工作来实现序列化，否则每次反序列化一个序列化的对象时都会创建一个新的实例。
+2.可以使用反射强行调用私有构造器（如果要避免这种情况，可以修改构造器，让它在创建第二个实例的时候抛异常）。
+
+而枚举类很好的解决了这两个问题，使用枚举除了线程安全和防止反射调用构造器之外，还提供了自动序列化机制，
+防止反序列化的时候创建新的对象。因此，《Effective Java》作者推荐使用的方法。不过，在实际工作中，很少看见有人这么写。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/21/2017122002_Singleton/" data-id="cjbf90gu30003fk22kn8ead6o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017122001_Operate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/20/2017122001_Operate/" class="article-date">
+  <time datetime="2017-12-20T15:53:17.125Z" itemprop="datePublished">2017-12-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/20/2017122001_Operate/">Java中的 &#34; | ^ &amp; &#34; 三个运算符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="今天面试的时候被问到了一个算法题，题目如下："><a href="#今天面试的时候被问到了一个算法题，题目如下：" class="headerlink" title="今天面试的时候被问到了一个算法题，题目如下："></a>今天面试的时候被问到了一个算法题，题目如下：</h2><p>在一个所有数字都出现偶数次的数组中，去掉其中一个数字，如何找出这个数字。</p>
+<p>这道题就用到了运算符。</p>
+<p>下面先简单介绍一下三个运算符，如下代码：</p>
+<pre><code>private static int a = 5;        // 0101
+private static int b = 11;        // 1011
+
+private static void testAB() {
+    System.out.println(a|b);    // 1111        15
+    System.out.println(a^b);    // 1110        14
+    System.out.println(a&amp;b);    // 0001        1
+}
+</code></pre><p>进行按位运算，算是复习了一下知识。</p>
+<p>然后特殊的记录一下“ ^ ”的知识点：</p>
+<p>自己与自己异或为0;</p>
+<p>具有传递性;</p>
+<p>00-&gt;0;</p>
+<p>01-&gt;1;</p>
+<p>11-&gt;0;</p>
+<p>##现在解答一下上面提到的面试题：</p>
+<pre><code>private static int result = 0;
+private static int[] arrs = {1,2,1,2,6,7,8,4,121,4,5,6,7,8,5};
+
+public static void main(String[] args) {
+    getResult();
+}
+
+private static void getResult() {
+    for(int i = 0; i &lt; arrs.length; i ++) {
+        result ^= arrs[i];
+    }
+    System.out.println(result);
+}
+</code></pre><p>就是只用了异或运算。</p>
+<h2 id="最后贴出本章的整体代码"><a href="#最后贴出本章的整体代码" class="headerlink" title="最后贴出本章的整体代码"></a>最后贴出本章的整体代码</h2><pre><code>public class TestAlgorithm {
+private static int result = 0;
+private static int[] arrs = {1,2,1,2,6,7,8,4,121,4,5,6,7,8,5};
+
+public static void main(String[] args) {
+    getResult();
+    testAB();
+}
+
+private static void getResult() {
+    for(int i = 0; i &lt; arrs.length; i ++) {
+        result ^= arrs[i];
+    }
+    System.out.println(result);
+}
+
+
+private static int a = 5;        // 0101
+private static int b = 11;        // 1011
+
+private static void testAB() {
+    System.out.println(a|b);    // 1111        15
+    System.out.println(a^b);    // 1110        14
+    System.out.println(a&amp;b);    // 0001        1
+}}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/20/2017122001_Operate/" data-id="cjbf90gu20002fk22i4ny1dqy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-2017121202_AboutAI" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -88,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/12/2017121202_AboutAI/" data-id="cjb3r1her0001gw224v91dp0h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/12/2017121202_AboutAI/" data-id="cjbf90gtu0000fk222el96wp7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/12/2017121201_AboutNLU/" data-id="cjb3r1hf70002gw22uvcovh3z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/12/2017121201_AboutNLU/" data-id="cjbf90gu40004fk22ipgldqoz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +442,7 @@ hexo d
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/07/2017112501/" data-id="cjb3r1her0000gw22o4z69em5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/07/2017112501/" data-id="cjbf90gtz0001fk22t8z19k8i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +467,7 @@ hexo d
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
@@ -271,9 +477,17 @@ hexo d
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/12/21/2017122002_Singleton/">设计模式 之 单例 模式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/2017122001_Operate/">Java中的 &#34; | ^ &amp; &#34; 三个运算符</a>
+          </li>
         
           <li>
             <a href="/2017/12/12/2017121202_AboutAI/">About AI</a>
