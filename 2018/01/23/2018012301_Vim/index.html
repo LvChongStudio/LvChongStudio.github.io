@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vim 编辑器使用笔记 | LvChongStudio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本 常用命令记录 k    上    ↑ j    下    ↓ h    左    ← l    右    → v    选中 y    复制 p    粘贴 :q    退出 :q!    退出不保存 :wq    保存退出 ZZ    保存退出 set number">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim 编辑器使用笔记">
+<meta property="og:url" content="http://yoursite.com/2018/01/23/2018012301_Vim/index.html">
+<meta property="og:site_name" content="LvChongStudio">
+<meta property="og:description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本 常用命令记录 k    上    ↑ j    下    ↓ h    左    ← l    右    → v    选中 y    复制 p    粘贴 :q    退出 :q!    退出不保存 :wq    保存退出 ZZ    保存退出 set number    设置显示行数 /    搜索 :h    帮助 w    光标至下一个单">
+<meta property="og:image" content="http://s4.sinaimg.cn/mw690/4d4afb6d4e1a1e5816273&690">
+<meta property="og:image" content="http://s6.sinaimg.cn/mw690/4d4afb6d4e1a1e582ad15&690">
+<meta property="og:updated_time" content="2018-01-23T13:18:52.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vim 编辑器使用笔记">
+<meta name="twitter:description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本 常用命令记录 k    上    ↑ j    下    ↓ h    左    ← l    右    → v    选中 y    复制 p    粘贴 :q    退出 :q!    退出不保存 :wq    保存退出 ZZ    保存退出 set number    设置显示行数 /    搜索 :h    帮助 w    光标至下一个单">
+<meta name="twitter:image" content="http://s4.sinaimg.cn/mw690/4d4afb6d4e1a1e5816273&690">
+  
+    <link rel="alternate" href="/atom.xml" title="LvChongStudio" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">LvChongStudio</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2018012301_Vim" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/23/2018012301_Vim/" class="article-date">
+  <time datetime="2018-01-23T12:32:55.847Z" itemprop="datePublished">2018-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vim 编辑器使用笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Vim 是 UNIX 文本编辑器 Vi 的加强版本</p>
+<p>常用命令记录</p>
+<p>k    上    ↑</p>
+<p>j    下    ↓</p>
+<p>h    左    ←</p>
+<p>l    右    →</p>
+<p>v    选中</p>
+<p>y    复制</p>
+<p>p    粘贴</p>
+<p>:q    退出</p>
+<p>:q!    退出不保存</p>
+<p>:wq    保存退出</p>
+<p>ZZ    保存退出</p>
+<p>set number    设置显示行数</p>
+<p>/    搜索</p>
+<p>:h    帮助</p>
+<p>w    光标至下一个单词</p>
+<p>e    光标至单词结尾</p>
+<p>d    删除</p>
+<p>b    上一个单词</p>
+<p>u    撤销</p>
+<p>i    插入</p>
+<p>a    追加</p>
+<p>q  r t  o<br> s  f g<br>z x c  n m</p>
+<p>以上内容为自己笔记</p>
+<p>以下内容转自<a href="http://blog.sina.com.cn/s/blog_4d4afb6d0101cydc.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_4d4afb6d0101cydc.html</a><br><img src="http://s4.sinaimg.cn/mw690/4d4afb6d4e1a1e5816273&amp;690" alt=""></p>
+<p><img src="http://s6.sinaimg.cn/mw690/4d4afb6d4e1a1e582ad15&amp;690" alt=""></p>
+<p>Vim 替换命令汇总<br>vi/vim 中可以使用 :s 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。<br>　　vi/vim 中可以使用 :s 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。<br>　　:s/vivian/sky/ 替换当前行第一个 vivian 为 sky<br>　　:s/vivian/sky/g 替换当前行所有 vivian 为 sky<br>　　:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky<br>　　:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky<br>　　n 为数字，若 n 为 .，表示从当前行开始到最后一行<br>　　:%s/vivian/sky/(等同于 :g/vivian/s//sky/) 替换每一行的第一个 vivian 为 sky<br>　　:%s/vivian/sky/g(等同于 :g/vivian/s//sky/g) 替换每一行中所有 vivian 为 sky<br>　　可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符<br>　　:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/<br>　　:%s+/oradata/apras/+/user01/apras1+ (使用+ 来 替换 / )： /oradata/apras/替换成/user01/apras1/<br>　　<em> <strong><strong><strong><strong><strong><strong><strong><strong><em>*</em></strong></strong></strong></strong></strong></strong></strong></strong></em><br>　　1.:s/vivian/sky/ 替换当前行第一个 vivian 为 sky<br>　　:s/vivian/sky/g 替换当前行所有 vivian 为 sky<br>　　2. :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky<br>　　:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky<br>　　(n 为数字，若 n 为 .，表示从当前行开始到最后一行)<br>　　3. :%s/vivian/sky/(等同于 :g/vivian/s//sky/) 替换每一行的第一个 vivian 为 sky<br>　　:%s/vivian/sky/g(等同于 :g/vivian/s//sky/g) 替换每一行中所有 vivian 为 sky<br>　　4. 可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符<br>　　:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/<br>　　5. 删除文本中的^M<br>　　问题描述：对于换行,window下用回车换行(0A0D)来表示，linux下是回车(0A)来表示。这样，将window上的文件拷到unix上用时，总会有个^M.请写个用在unix下的过滤windows文件的换行符(0D)的shell或c程序。<br>　　· 使用命令：cat filename1 | tr -d “^V^M” &gt; newfile;<br>　　· 使用命令：sed -e “s/^V^M//” filename &gt; outputfilename。需要注意的是在1、2两种方法中，^V和^M指的是Ctrl+V和Ctrl+M。你必须要手工进行输入，而不是粘贴。<br>　　· 在vi中处理：首先使用vi打开文件，然后按ESC键，接着输入命令：%s/^V^M//。<br>　　· :%s/^M$//g<br>　　如果上述方法无用，则正确的解决办法是：<br>　　· tr -d “\r” &lt; src &gt;dest<br>　　· tr -d “\015” dest<br>　　· strings A&gt;B<br>　　6. 其它<br>　　利用 :s 命令可以实现字符串的替换。具体的用法包括：<br>　　:s/str1/str2/ 用字符串 str2 替换行中首次出现的字符串 str1<br>　　:s/str1/str2/g 用字符串 str2 替换行中所有出现的字符串 str1<br>　　:.,$ s/str1/str2/g 用字符串 str2 替换正文当前行到末尾所有出现的字符串 str1<br>　　:1,$ s/str1/str2/g 用字符串 str2 替换正文中所有出现的字符串 str1<br>　　:g/str1/s//str2/g 功能同上<br>　　从上述替换命令可以看到：g 放在命令末尾，表示对搜索字符串的每次出现进行替换;不加 g，表示只对搜索<br>　　字符串的首次出现进行替换;g 放在命令开头，表示对正文中所有包含搜索字符串的行进行替换操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/23/2018012301_Vim/" data-id="cjcrsnfcu0007a0223sp6wp1r" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/23/2018012302_Linux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Linux项目使用笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/24/2017122402_LinuxBlackScreen/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Ubuntu 出现黑屏问题，只有鼠标光标可移动</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/23/2018012304_RasaNlu/">Rasa NLU 聊天机器人自然语言理解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/23/2018012303_RasaCore/">Rasa Core 聊天机器人对话管理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/23/2018012302_Linux/">Linux项目使用笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/23/2018012301_Vim/">Vim 编辑器使用笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/24/2017122402_LinuxBlackScreen/">Ubuntu 出现黑屏问题，只有鼠标光标可移动</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Lv Chong<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
